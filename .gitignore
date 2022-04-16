@@ -3,6 +3,10 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+#training Data
+data/
+temp/fer2013.csv
+
 # C extensions
 *.so
 
