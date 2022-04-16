@@ -5,8 +5,6 @@ __pycache__/
 
 #training Data
 data/
-temp/dataset_prepare.py
-temp/fer2013.csv
 
 # C extensions
 *.so

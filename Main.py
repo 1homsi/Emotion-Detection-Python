@@ -1,6 +1,6 @@
 """
 
-github: 
+github: https://github.com/1homsi/Emotion-Detection-Python.git
 
 Entry Point to The App
 Code for the backend Functions written in backend.py
@@ -54,7 +54,6 @@ def Close():
     VideoCamera().close_camera() #close the camera
     print("Camera Closed")
     
-
 
 def start_app():
     # Start the server

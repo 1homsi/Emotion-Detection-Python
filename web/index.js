@@ -5,9 +5,7 @@ const py_video = () => {
 }
 
 const closeConnection = () => {
-    let elem = document.getElementById("bg");
     eel.Close()();
-    elem.src = "./Images/placeholder.png";
 }
 
 const MoveToTrain = () => {
