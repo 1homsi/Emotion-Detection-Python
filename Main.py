@@ -6,7 +6,7 @@ Entry Point to The App
 Code for the backend Functions written in backend.py
 
 What is the point of this App?
-This app is a web app that can be used to detect emotions using a python backend
+This app is a web app that can be used to detect emotions using python.
 
 """
 
@@ -47,7 +47,7 @@ def video_feed():
 @eel.expose
 def train(iterations):
     if Train_Model(int(iterations)): # train the model
-        eel.showMessage("Model Trained Successfully")() # show message
+        return "Model Was trained Successfully"
     
 @eel.expose
 def Close():

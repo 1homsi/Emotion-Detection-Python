@@ -5,17 +5,20 @@ const py_video = () => {
 }
 
 const closeConnection = () => {
+    const elem = document.getElementById("bg");
+    eel.Close()();
+    elem.src = "./Images/Nassim.jpeg"
+}
+
+const Temrinate = () => {
     eel.Close()();
 }
 
-const MoveToTrain = () => {
-    eel.Close()();
-}
-
-const TrainModel = () => {
+const TrainModel = async () => {
     let info = document.getElementById("info");
     info.style.visibility = "visible";
-    eel.train(input[0]?.value)();
+    var n = await eel.train(input[0]?.value)();
+    info.innerHTML = n;
 }
 
 eel.expose(updateImageSrc);

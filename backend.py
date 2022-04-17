@@ -1,5 +1,4 @@
 import numpy as np
-import argparse
 import matplotlib.pyplot as plt
 import cv2 as cv
 from tensorflow.keras.models import Sequential

@@ -75,3 +75,7 @@ button:hover {
 #info {
     visibility: hidden;
 }
+
+#main {
+    text-align: center;
+}

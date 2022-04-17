@@ -27,7 +27,13 @@ The User interface is built using eel, a Python library that allows to create we
 
 ##### Download the FER-2013 dataset from [here](https://drive.google.com/file/d/1X60B-uR3NtqPd4oosdotpbDgy8KOfUdr/view?usp=sharing)
 
-- To run the project
+- To run the project (windows)
+
+```bash
+python main.py
+```
+
+- To run the project (linux/unix)
 
 ```bash
 python main.py
