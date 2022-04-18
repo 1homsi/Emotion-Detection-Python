@@ -36,7 +36,7 @@ python main.py
 - To run the project (linux/unix)
 
 ```bash
-python main.py
+python3 main.py
 ```
 
 ## Algorithm

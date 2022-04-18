@@ -11,7 +11,7 @@ This app is a web app that can be used to detect emotions using python.
 """
 
 import logging
-import sys
+import sys 
 from tkinter import Tk, messagebox
 import eel
 import base64
@@ -56,7 +56,7 @@ def Close():
     
 
 def start_app():
-    # Start the server
+    # Start the server 
     try:
         eel.init('Web') # path to project folder 
         eel.start('index.html') # start the web app with the main file index.html

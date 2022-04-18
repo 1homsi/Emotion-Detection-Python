@@ -1,4 +1,4 @@
-import numpy as np
+import numpy as np  
 import matplotlib.pyplot as plt
 import cv2 as cv
 from tensorflow.keras.models import Sequential
@@ -16,10 +16,10 @@ val_directory = './data/test'
 
 num_train = 28709 # number of training set
 num_val = 7178 # number of validation set
-batch_size = 64 
+batch_size = 64 #used for accuarcy
 
-trainDataGenrator = ImageDataGenerator(rescale=1./255) # rescale the image to 0-1
-valDataGenrator = ImageDataGenerator(rescale=1./255) # rescale the image to 0-1
+trainDataGenrator = ImageDataGenerator(rescale=1./255) # rescale the image between 0-1
+valDataGenrator = ImageDataGenerator(rescale=1./255) # rescale the image between 0-1
 
 
 train_generator = trainDataGenrator.flow_from_directory(
@@ -28,7 +28,7 @@ train_generator = trainDataGenrator.flow_from_directory(
         batch_size=batch_size,
         color_mode="grayscale",
         class_mode='categorical'
-    ) # Define the CNN Model
+    ) # Define the CNN Model Convolutional Neural Network 
 
 validation_generator = valDataGenrator.flow_from_directory(
         val_directory,
@@ -39,7 +39,7 @@ validation_generator = valDataGenrator.flow_from_directory(
     ) # Define the CNN Model
 
 # Create the model
-model = Sequential() # Plot the training and validation loss + accuracy
+model = Sequential() # Plot the training and validation loss + accuracy Initlizing the model
 model.add(Conv2D(32, kernel_size=(3, 3), activation='relu', input_shape=(48,48,1))) #
 model.add(Conv2D(64, kernel_size=(3, 3), activation='relu'))
 model.add(MaxPooling2D(pool_size=(2, 2)))
@@ -65,6 +65,7 @@ def Train_Model(num_epoch):
             epochs=num_epoch,
             validation_data=validation_generator,
             validation_steps=num_val // batch_size) #builds the model
+    print(model_info)
     model.save_weights('./modules/model.h5')
     return True
 
@@ -94,12 +95,11 @@ class VideoCamera(object):
             cropped_img = np.expand_dims(np.expand_dims(cv.resize(roi_gray, (48, 48)), -1), 0) # resize the image
             prediction = model.predict(cropped_img) # predict the emotion
             maxindex = int(np.argmax(prediction)) # get the index of the largest value
-            #TODO: make the color of the text change with the emotion
             cv.putText(frame, emotion_dict[maxindex], (x+20, y-60), 
                        cv.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2, cv.LINE_AA) # write the emotion text above rectangle
         ret, jpeg = cv.imencode('.jpg', frame) # encode the frame into jpeg
         if isOpened:
-            return jpeg.tobytes()
+            return jpeg.tobytes() #byte array 64
     def close_camera(self):
         isOpened = False
         self.video.release() # release the camera
