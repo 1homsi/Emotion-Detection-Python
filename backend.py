@@ -14,13 +14,15 @@ os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2' #to suppress some warnings
 train_directory = './data/train'
 val_directory = './data/test'
 
+
+
+#supervised learning
 num_train = 28709 # number of training set
 num_val = 7178 # number of validation set
 batch_size = 64 #used for accuarcy
 
 trainDataGenrator = ImageDataGenerator(rescale=1./255) # rescale the image between 0-1
 valDataGenrator = ImageDataGenerator(rescale=1./255) # rescale the image between 0-1
-
 
 train_generator = trainDataGenrator.flow_from_directory(
         train_directory,
@@ -38,7 +40,7 @@ validation_generator = valDataGenrator.flow_from_directory(
         class_mode='categorical'
     ) # Define the CNN Model
 
-# Create the model
+# Create the model using logistic regression and regularization
 model = Sequential() # Plot the training and validation loss + accuracy Initlizing the model
 model.add(Conv2D(32, kernel_size=(3, 3), activation='relu', input_shape=(48,48,1))) #
 model.add(Conv2D(64, kernel_size=(3, 3), activation='relu'))
