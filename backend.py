@@ -14,8 +14,6 @@ os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2' #to suppress some warnings
 train_directory = './data/train'
 val_directory = './data/test'
 
-
-
 #supervised learning
 num_train = 28709 # number of training set
 num_val = 7178 # number of validation set
@@ -40,7 +38,7 @@ validation_generator = valDataGenrator.flow_from_directory(
         class_mode='categorical'
     ) # Define the CNN Model
 
-# Create the model using logistic regression and regularization
+# Create the model using regularization
 model = Sequential() # Plot the training and validation loss + accuracy Initlizing the model
 model.add(Conv2D(32, kernel_size=(3, 3), activation='relu', input_shape=(48,48,1))) #
 model.add(Conv2D(64, kernel_size=(3, 3), activation='relu'))
@@ -96,7 +94,7 @@ class VideoCamera(object):
             roi_gray = gray[y:y + h, x:x + w] # crop the region of interest i.e. face from the frame
             cropped_img = np.expand_dims(np.expand_dims(cv.resize(roi_gray, (48, 48)), -1), 0) # resize the image
             prediction = model.predict(cropped_img) # predict the emotion
-            maxindex = int(np.argmax(prediction)) # get the index of the largest value
+            maxindex = int(np.argmax(prediction)) # get the index of the largest value (logistic regression)
             cv.putText(frame, emotion_dict[maxindex], (x+20, y-60), 
                        cv.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2, cv.LINE_AA) # write the emotion text above rectangle
         ret, jpeg = cv.imencode('.jpg', frame) # encode the frame into jpeg

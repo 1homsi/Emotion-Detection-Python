@@ -1,7 +1,5 @@
 """
 
-github: https://github.com/1homsi/Emotion-Detection-Python.git
-
 Entry Point to The App
 Code for the backend Functions written in backend.py
 
@@ -16,6 +14,8 @@ from tkinter import Tk, messagebox
 import eel
 import base64
 from backend import * #import the backend
+
+#Import Functions
 from ML_methods.NueralNetwork import *
 from ML_methods.LinearRegressionOneVariable import *
 from ML_methods.LinearWithMultiVar import *
@@ -100,4 +100,4 @@ def start_app():
 
 if __name__ == "__main__":
     start_app() # Call the start app function
-    
+    print("App Started")
