@@ -21,7 +21,7 @@ from ML_methods.LinearRegressionOneVariable import *
 from ML_methods.LinearWithMultiVar import *
 from ML_methods.SupervisedLearning import *
 from ML_methods.UnsupervisedLearning import *
-
+from ML_methods.Kmeans import *
 
 
 def show_error(title, msg):
@@ -79,6 +79,11 @@ def supervisedLearning():
 @eel.expose
 def UnsupervisedLearning():
     DBSCAN_clustering()
+
+@eel.expose 
+def kmeansMethod():
+    kmeans_visualizer()
+
 
 def start_app():
     # Start the server 

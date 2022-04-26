@@ -1,4 +1,3 @@
-
 const py_video = () => {
     eel.video_feed()();
 }
@@ -44,4 +43,8 @@ const TrainModelLinearOne = () => {
 
 const TrainModelMultiLinear = () => {
     eel.linearRegressionMulti()();
+}
+
+const KMEANS = () => {
+    eel.kmeansMethod()();
 }
