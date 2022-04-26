@@ -1,4 +1,3 @@
-const input = document.getElementsByName("iterations");
 
 const py_video = () => {
     eel.video_feed()();
@@ -17,7 +16,7 @@ const Temrinate = () => {
 const TrainModel = async () => {
     let info = document.getElementById("info");
     info.style.visibility = "visible";
-    var n = await eel.train(input[0]?.value)();
+    var n = await eel.train(50)();
     info.innerHTML = n;
 }
 
@@ -27,3 +26,22 @@ function updateImageSrc(val) {
     elem.src = "data:image/jpeg;base64," + val;
 }
 
+const TrainModelNeural = () => {
+    eel.neuralNet()();
+}
+
+const TrainModelSuper = () => {
+    eel.supervisedLearning()();
+}
+
+const TrainModelUnsper = () => {
+    eel.UnsupervisedLearning()();
+}
+
+const TrainModelLinearOne = () => {
+    eel.linearRegressionOne()();
+}
+
+const TrainModelMultiLinear = () => {
+    eel.linearRegressionMulti()();
+}
