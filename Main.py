@@ -16,6 +16,12 @@ from tkinter import Tk, messagebox
 import eel
 import base64
 from backend import * #import the backend
+from ML_methods.NueralNetwork import *
+from ML_methods.LinearRegressionOneVariable import *
+from ML_methods.LinearWithMultiVar import *
+from ML_methods.SupervisedLearning import *
+from ML_methods.UnsupervisedLearning import *
+
 
 
 def show_error(title, msg):
@@ -54,12 +60,31 @@ def Close():
     VideoCamera().close_camera() #close the camera
     print("Camera Closed")
     
+@eel.expose
+def neuralNet():
+    neuralNetwork()
+
+@eel.expose
+def linearRegressionOne():
+    OneVarLinear()
+    
+@eel.expose
+def linearRegressionMulti():
+    MultiVarLinear()
+    
+@eel.expose
+def supervisedLearning():
+    SuperVised()
+
+@eel.expose
+def UnsupervisedLearning():
+    DBSCAN_clustering()
 
 def start_app():
     # Start the server 
     try:
         eel.init('Web') # path to project folder 
-        eel.start('index.html') # start the web app with the main file index.html
+        eel.start('train.html') # start the web app with the main file index.html
     except Exception as e: 
         err_msg = 'Could not launch a local server' # error message
         logging.error('{}\n{}'.format(err_msg, e.args))
