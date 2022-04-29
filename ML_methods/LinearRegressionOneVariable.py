@@ -5,17 +5,13 @@ from sklearn import linear_model
 
 
 def OneVarLinear():
-    df1 = pd.read_csv('../Dataset/data1.csv')
+    df1 = pd.read_csv("ML_methods\Dataset\data1.csv")
     plt.xlabel("Year")
     plt.ylabel("Per Capita Income")
     plt.scatter(df1.year, df1.pci)
 
     reg1 = linear_model.LinearRegression()
     reg1.fit(df1[['year']], df1.pci)
-
     reg1.predict([[2021]])
-
-    plt.xlabel("Year")
-    plt.ylabel("Per Capita Income")
-    plt.scatter(df1.year, df1.pci)
-    plt.plot(df1.year, reg1.predict(df1[['year']]), color='red')
+    print(reg1.coef_)
+    print( reg1.predict(df1[['year']]))

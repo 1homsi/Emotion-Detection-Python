@@ -2,15 +2,11 @@
 from numpy import loadtxt
 from keras.models import Sequential
 from keras.layers import Dense
-import csv
-
-# load the dataset
-dataset = csv.reader('./Dataset/pima-indians-diabetes.csv', delimiter=',')
+import pandas as pd
 
 def neuralNetwork():
-	# split into input (X) and output (y) variables
-	X = dataset[:,0:8]
-	y = dataset[:,8]
+	dataset = pd.read_csv("ML_methods\Dataset\pima-indians-diabetes.csv")
+
 	# define the keras model
 	model = Sequential()
 	model.add(Dense(12, input_dim=8, activation='relu'))
@@ -19,9 +15,9 @@ def neuralNetwork():
 	# compile the keras model
 	model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
 	# fit the keras model on the dataset
-	model.fit(X, y, epochs=150, batch_size=10, verbose=0)
+	model.fit(dataset, dataset, epochs=150, batch_size=10, verbose=0)
 	# make class predictions with the model
-	predictions = (model.predict(X) > 0.5).astype(int)
+	predictions = (model.predict(dataset) > 0.5).astype(int)
 	# summarize the first 5 cases
 	for i in range(5):
-		print('%s => %d (expected %d)' % (X[i].tolist(), predictions[i], y[i]))
+		print('%s => %d (expected %d)' % (dataset.to_string(), predictions[i], dataset))

@@ -1,8 +1,9 @@
 import pandas
 from sklearn import linear_model
+import matplotlib.pyplot as plt
 
 def MultiVarLinear():
-    df = pandas.read_csv("./Dataset/cars.csv")
+    df = pandas.read_csv("ML_methods\Dataset\cars.csv")
     X = df[['Weight', 'Volume']]
     y = df['CO2']
 
